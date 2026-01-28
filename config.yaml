@@ -8,7 +8,7 @@ dirs:
     path: /project/logsdon_shared/project_archive
   projects:
     path: /project/logsdon_shared/projects
-    plot_args: "--min_filesize_gb 2.0"
+    plot_args: "--min_filesize_gb 3.0"
   tools:
     path: /project/logsdon_shared/tools
 ignore_patterns:

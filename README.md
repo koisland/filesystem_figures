@@ -1,5 +1,5 @@
 # Filesystem figures
-Scripts to plot interactive filesystem summaries.
+Scripts to plot interactive filesystem summaries with plotly.
 
 <table>
   <tr>
@@ -49,6 +49,12 @@ ignore_patterns:
 ```
 
 ## Usage
+Run workflow.
 ```bash
 snakemake -p --workflow-profile ~/profiles/lpc -j 6
+```
+
+Generate report with HTML files.
+```bash
+snakemake --report report.html
 ```

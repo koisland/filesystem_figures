@@ -5,9 +5,18 @@ rule plot_summary:
     input:
         rules.get_file_summary.output.checked_dir_summary
     output:
-        join(output_dir, "plots", "{lbl}_total_by_user.html"),
-        join(output_dir, "plots", "{lbl}_cfilesize.html"),
-        join(output_dir, "plots", "{lbl}_filesize_boxplot.html"),
+        report(
+            join(output_dir, "plots", "{lbl}_total_by_user.html"),
+            category="Total filesize by user ({lbl})"
+        ),
+        report(
+            join(output_dir, "plots", "{lbl}_cfilesize.html"),
+            category="Cumulative filesize ({lbl})"
+        ),
+        report(
+            join(output_dir, "plots", "{lbl}_filesize_boxplot.html"),
+            category="Filesize distribution ({lbl})",
+        ),
     params:
         output_prefix=lambda wc, output: join(dirname(output[0]), wc.lbl),
         args=lambda wc: all_dirs_cfg[wc.lbl].get("plot_args", ""),

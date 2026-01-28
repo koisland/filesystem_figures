@@ -3,7 +3,11 @@ rule get_file_summary:
     input:
         checked_dir=lambda wc: all_dirs_cfg[wc.lbl]["path"]
     output:
-        checked_dir_summary=join(output_dir, "summary", "{lbl}.tsv.gz")
+        checked_dir_summary=join(output_dir, "summary", "{lbl}.tsv.gz"),
+        # checked_dir_summary=report(
+        #     join(output_dir, "summary", "{lbl}.tsv.gz"),
+        #     category="File summary ({lbl})",
+        # ),
     log:
         join(log_dir, "{lbl}.log")
     benchmark:
