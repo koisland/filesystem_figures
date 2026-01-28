@@ -1,9 +1,29 @@
 # Filesystem figures
+Scripts to plot interactive filesystem summaries.
+
+<table>
+  <tr>
+    <td>
+      <figure>
+          <img src="docs/cumulative_size.png" width="100%">
+          <br>
+          <figcaption>Cumulative size colored by user</figcaption>
+      </figure>
+    </td>
+    <td>
+      <figure>
+          <img src="docs/filesize_dist.png" width="100%">
+          <br>
+          <figcaption>Filesize distribution by user</figcaption>
+      </figure>
+    </td>
+  </tr>
+</table>
 
 ## Getting started
 ```bash
 which snakemake
-git clone 
+git clone https://github.com/koisland/filesystem_figures.git
 ```
 
 ## Config
