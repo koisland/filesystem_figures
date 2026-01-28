@@ -1,0 +1,15 @@
+configfile: "config.yaml"
+
+
+include: "rules/common.smk"
+include: "rules/constants.smk"
+include: "rules/get_file_summary.smk"
+include: "rules/plot.smk"
+
+
+rule all:
+    input:
+        rules.get_file_summary_all.input,
+        rules.plot_all.input,
+    default_target:
+        True

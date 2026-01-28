@@ -1,0 +1,16 @@
+output_dir: results
+dirs:
+  data:
+    path: /project/logsdon_shared/data
+  long_read_archive:
+    path: /project/logsdon_shared/long_read_archive
+  project_archive:
+    path: /project/logsdon_shared/project_archive
+  projects:
+    path: /project/logsdon_shared/projects
+    plot_args: "--min_filesize_gb 2.0"
+  tools:
+    path: /project/logsdon_shared/tools
+ignore_patterns:
+  - "*.snakemake/*"
+  - "*.git/*"
