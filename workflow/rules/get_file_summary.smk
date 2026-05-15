@@ -27,14 +27,20 @@ rule get_file_summary:
         """
         {{ find {input.checked_dir} ! -readable -prune -o -type f {params.find_ignore_patterns} -size +0 | \
         xargs -P {threads} -I {{}} bash -c '
-            file_user=$(stat -c "%U\\t%y" "{{}}" || true);
+            file_user=$(stat -c "%U,%y" "{{}}" || true);
             file_size=$(du "{{}}" || true);
             if [ -z "${{file_user}}" ] ||  [ -z "${{file_size}}" ]; then
                 return 0
             fi
-            printf "%s\t%s" "${{file_user}}" "${{file_size}}"
+            printf "%s,%s\\n" "${{file_user}}" "${{file_size}}"
         ' \\; | \
+        sed 's/,/\\t/g' | \
         sort -nrk 5,5 | \
+        awk -v OFS="\\t" '{{
+            is_tempfile=match($8, "tmp|temp") ? "TRUE" : "FALSE";
+            is_uncompressed=match($8, "(.bam|.cram|.gz|.bz2|.positions|.index|.bw)$") ? "FALSE" : "TRUE";
+            print $0, is_uncompressed, is_tempfile
+        }}' | \
         gzip > {output} ;}} 2> {log}
         """
 

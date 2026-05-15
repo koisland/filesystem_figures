@@ -48,6 +48,14 @@ ignore_patterns:
   - "*.git/*"
 ```
 
+## Output
+|outfile|description|
+|-|-|
+|`summary/{dir}.tsv.gz`|TSV file with columns: `["user", "datetime", "filesize_blocks", "abspath", "is_uncompressed", "is_tempfile"]`|
+|`plots/{dir}_cfilesize.html`|Plot with cumulative filesize since the start of the lab|
+|`plots/{dir}_filesize_boxplot.html`|Plot of files by filesize|
+|`plots/{dir}_total_by_user.html`|Plot with totals by user| 
+
 ## Usage
 Run workflow.
 ```bash

@@ -7,7 +7,9 @@ SUMMARY_COLS_SCHEMA = {
     "user": pl.String,
     "datetime": pl.String,
     "filesize_blocks": pl.UInt64, 
-    "abspath": pl.String
+    "abspath": pl.String,
+    "is_uncompressed": pl.Boolean,
+    "is_tempfile": pl.Boolean,
 }
 # Start of lab
 DT_START_LAB = datetime.datetime(2024, 1, 3, tzinfo=datetime.timezone.utc)
