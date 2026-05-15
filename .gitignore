@@ -1,5 +1,5 @@
 .snakemake
-results
-logs
-benchmarks
+results*
+logs*
+benchmarks*
 *.html

@@ -19,9 +19,11 @@ rule get_file_summary:
             else ""
         )
     threads:
-        12
+        24
     shell:
         # https://stackoverflow.com/a/25234419
+        # 5th column due to date
+        # https://www.shellcheck.net/wiki/SC2059
         """
         {{ find {input.checked_dir} ! -readable -prune -o -type f {params.find_ignore_patterns} -size +0 | \
         xargs -P {threads} -I {{}} bash -c '
@@ -30,9 +32,9 @@ rule get_file_summary:
             if [ -z "${{file_user}}" ] ||  [ -z "${{file_size}}" ]; then
                 return 0
             fi
-            printf "${{file_user}}\\t${{file_size}}\\n"
+            printf "%s\t%s" "${{file_user}}" "${{file_size}}"
         ' \\; | \
-        sort -nrk 1,1 | \
+        sort -nrk 5,5 | \
         gzip > {output} ;}} 2> {log}
         """
 
