@@ -1,4 +1,4 @@
-# Filesystem figures
+# Snakemake-fs-figures
 Scripts to plot interactive filesystem summaries with plotly.
 
 <table>
